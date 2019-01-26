@@ -28,7 +28,7 @@ public class FoodKombo_C : MonoBehaviour
 
         if (KomboAnzahl <= 10) {
             FoodChecker.PointMulti = 1;
-            ForKombo.color = Color.yellow;
+            ForKombo.color = Color.white;
         }
 
         if (KomboAnzahl >= 10 && KomboAnzahl <= 20) {
