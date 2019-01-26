@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2630584903677180860}
   - component: {fileID: 237142366859182962}
   - component: {fileID: 1952400780561829951}
+  - component: {fileID: 7182120774520228113}
   m_Layer: 0
   m_Name: Test Cat
   m_TagString: Untagged
@@ -70,8 +71,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8f50df282c26703439821c6bc2c37b2c, type: 3}
+  m_SortingOrder: 4
+  m_Sprite: {fileID: 21300000, guid: a926edac328e88c42ad1d97e30a5b0b2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -135,3 +136,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!95 &7182120774520228113
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7240101466263686526}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8078dddb105338847ad66fdccd3a10c2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

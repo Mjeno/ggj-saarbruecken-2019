@@ -53,19 +53,19 @@ public class Cat_Spawn : MonoBehaviour
     {
         Debug.Log("Spawning Cat.");
 
-
-
         if(Random.Range(-1, 1) < 0)
         {
             GameObject cat = Instantiate(GOCat, TrCatSpawnL);
             cat.GetComponent<Cat_Enconuter>().GOCatSpawn = gameObject;
             cat.GetComponent<Cat_Enconuter>().BSpawnedRight = false;
+            cat.GetComponent<Cat_Enconuter>().V2Destination = new Vector2(-4, -1.75f);
         }
-        else 
+        else
         {
             GameObject cat = Instantiate(GOCat, TrCatSpawnR);
             cat.GetComponent<Cat_Enconuter>().GOCatSpawn = gameObject;
             cat.GetComponent<Cat_Enconuter>().BSpawnedRight = true;
+            cat.GetComponent<Cat_Enconuter>().V2Destination = new Vector2(4, -1.75f);
         }
     }
         

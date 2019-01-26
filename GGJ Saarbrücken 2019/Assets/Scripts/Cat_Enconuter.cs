@@ -12,10 +12,7 @@ public class Cat_Enconuter : MonoBehaviour
     Rigidbody2D rb;
     public float FCatSlaySpeed = 5;
     Vector2 V2Kick;
- 
-
-    
-
+    public Vector2 V2Destination;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +28,7 @@ public class Cat_Enconuter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     
+        transform.position = Vector2.MoveTowards(transform.position, V2Destination, 0.1f);        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

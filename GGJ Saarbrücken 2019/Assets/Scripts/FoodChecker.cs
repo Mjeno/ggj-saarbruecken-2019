@@ -165,7 +165,7 @@ public class FoodChecker : MonoBehaviour
         {
             currentFood = collision.gameObject;
        */ 
-        if (collision)
+        if (collision.gameObject.GetComponent<Meal>())
         {
             switch (collision.gameObject.GetComponent<Meal>().currentType)
             {
