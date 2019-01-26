@@ -19,6 +19,8 @@ public class FoodChecker : MonoBehaviour
 
     public float FoodmeterDazu =10f;
 
+    public static int PointMulti;
+
     void Start() {
     	eaterAnim = this.GetComponent<Animator>();
     }
@@ -32,9 +34,10 @@ public class FoodChecker : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.W))
             {
                 essenDaTrinken = false;
-                Point_C.Points += 10;
+                Point_C.Points += PointMulti *10;
                 updateAnimation("bPour");
                 Destroy(currentFood);
+                FoodKombo_C.KomboAnzahl++;
             }
 
             if(Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.K))
@@ -43,6 +46,7 @@ public class FoodChecker : MonoBehaviour
                 updateAnimation("bEat");
                 FoodBar_C.barLenght += 10;
                 essenDaTrinken = false;
+                FoodKombo_C.KomboMoeglich = false;
             }
         }
 
@@ -50,19 +54,20 @@ public class FoodChecker : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.L))
             { 
-                Point_C.Points += 10;
+                Point_C.Points += PointMulti * 10;
                 essenDaVeggie = false;
                 updateAnimation("bThrow");
                 Destroy(currentFood);
-                
+                FoodKombo_C.KomboAnzahl++;
             }
 
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.K))
             {
                 Destroy(currentFood);
                 updateAnimation("bEat");
-                FoodBar_C.barLenght += 10;
+                FoodBar_C.barLenght +=  10;
                 essenDaVeggie = false;
+                FoodKombo_C.KomboMoeglich = false;
             }
         }
 
@@ -70,11 +75,11 @@ public class FoodChecker : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.S))
             {
-                Point_C.Points += 10;
+                Point_C.Points += PointMulti * 10;
                 essenDaFleisch = false;
                 updateAnimation("bFeed");
                 Destroy(currentFood);
-                
+                FoodKombo_C.KomboAnzahl++;
             }
             if (Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.K))
             {
@@ -82,6 +87,7 @@ public class FoodChecker : MonoBehaviour
                 updateAnimation("bEat");
                 FoodBar_C.barLenght += 10;
                 essenDaFleisch = false;
+                FoodKombo_C.KomboMoeglich = false;
             }
 
         }
@@ -90,11 +96,11 @@ public class FoodChecker : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.K))
             {
-                Point_C.Points += 10;
+                Point_C.Points += PointMulti * 10;
                 essenDaInedible = false;
                 updateAnimation("bThrow");
                 Destroy(currentFood);
-                
+                FoodKombo_C.KomboAnzahl++;
             }
             if (Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.W))
             {
@@ -102,6 +108,7 @@ public class FoodChecker : MonoBehaviour
                 updateAnimation("bEat");
                 FoodBar_C.barLenght += 10;
                 essenDaInedible = false;
+                FoodKombo_C.KomboMoeglich = false;
             }
 
         }
@@ -112,6 +119,7 @@ public class FoodChecker : MonoBehaviour
             {
                 essenDaDessert = false;
                 Destroy(currentFood);
+                FoodKombo_C.KomboMoeglich = false;
             }
         }
 
