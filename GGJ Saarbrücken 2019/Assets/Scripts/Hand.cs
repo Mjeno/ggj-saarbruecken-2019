@@ -71,7 +71,9 @@ public class Hand : MonoBehaviour
                 GetComponentInChildren<SpriteRenderer>().sprite = SSpriteKeys;
                 BHandSlapL = false;
                 BHandSlapR = false;
-            } 
+            } else {
+                GetComponentInChildren<SpriteRenderer>().sprite = SSpriteMove;
+            }
         }
         if (!bBlockHand)
         {
