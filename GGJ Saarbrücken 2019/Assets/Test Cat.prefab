@@ -10,6 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5702252137023907578}
   - component: {fileID: 7189073864225709292}
+  - component: {fileID: 2630584903677180860}
+  - component: {fileID: 237142366859182962}
+  - component: {fileID: 1952400780561829951}
   m_Layer: 0
   m_Name: Test Cat
   m_TagString: Untagged
@@ -79,3 +82,56 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2630584903677180860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7240101466263686526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69c115d3aa93ef24cbb865fcf1276513, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GOHand: {fileID: 3360111023697882117, guid: 97f24840059347347b64d3b3e2c412e4, type: 3}
+  GOCatSpawn: {fileID: 2843733571180423861, guid: c1aaa4a42ee9fa04588f0961d71cca8c,
+    type: 3}
+  BSpawnedRight: 1
+--- !u!58 &237142366859182962
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7240101466263686526}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2
+--- !u!50 &1952400780561829951
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7240101466263686526}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 5
+  m_LinearDrag: 3
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
