@@ -84,6 +84,7 @@ public class Hand : MonoBehaviour
     {
         Debug.Log("Hand wird zurück gesetztz");
         transform.position = V3HandKeyPos;
+        GetComponentInChildren<SpriteRenderer>().sprite = SSpriteKeys;
     }
 
 
