@@ -16,24 +16,24 @@ public class MealSpawner : MonoBehaviour
     void Update()
     {
     	//Debug.Log("Time.time: " + Time.time);
-    	if (Time.time > 10 && Time.time < 20 && !bStageTwo) {
+    	if (Time.time > 15 && Time.time < 30 && !bStageTwo) {
     		StopCoroutine(SpawningRoutine);
     		SpawningRoutine = StartCoroutine("SpawnMeal", 2f);
     		bStageTwo = true;
     	}
-    	if (Time.time > 20 && Time.time < 30 && !bStageThree) {
+    	if (Time.time > 30 && Time.time < 45 && !bStageThree) {
     		StopCoroutine(SpawningRoutine);
     		SpawningRoutine = StartCoroutine("SpawnMeal", 1.5f);
     		bStageThree = true;
     	}
-    	if (Time.time > 30 && Time.time < 40 && !bStageFour) {
+    	if (Time.time > 45 && Time.time < 60 && !bStageFour) {
     		StopCoroutine(SpawningRoutine);
     		SpawningRoutine = StartCoroutine("SpawnMeal", 1f);
     		bStageFour = true;
     	}
-    	if (Time.time > 40 && !bStageFive) {
+    	if (Time.time > 75 && !bStageFive) {
     		StopCoroutine(SpawningRoutine);
-    		SpawningRoutine = StartCoroutine("SpawnMeal", 0.5f);
+    		SpawningRoutine = StartCoroutine("SpawnMeal", 0.75f);
     		bStageFive = true;
     	}
     }

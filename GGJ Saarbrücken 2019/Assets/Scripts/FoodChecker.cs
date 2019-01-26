@@ -11,6 +11,9 @@ public class FoodChecker : MonoBehaviour
     public static bool essenDaInedible;
     public static bool essenDaDessert;
 
+    GameObject goDog;
+    GameObject goRejectedInedible;
+
     Animator eaterAnim;
 
     //Hilfe bei der ExitCollisionsabfrage
@@ -23,6 +26,7 @@ public class FoodChecker : MonoBehaviour
 
     void Start() {
     	eaterAnim = this.GetComponent<Animator>();
+        goDog = GameObject.Find("Dog");
     }
 
     private void Update()
@@ -57,6 +61,7 @@ public class FoodChecker : MonoBehaviour
                 Point_C.Points += PointMulti * 10;
                 essenDaVeggie = false;
                 updateAnimation("bThrow");
+                goRejectedInedible = Instantiate (Resources.Load ("RejectedVeggie", typeof(GameObject))) as GameObject;
                 Destroy(currentFood);
                 FoodKombo_C.KomboAnzahl++;
             }
@@ -78,6 +83,7 @@ public class FoodChecker : MonoBehaviour
                 Point_C.Points += PointMulti * 10;
                 essenDaFleisch = false;
                 updateAnimation("bFeed");
+                goDog.GetComponent<Animator>().SetBool("gotsausage", true);
                 Destroy(currentFood);
                 FoodKombo_C.KomboAnzahl++;
             }
@@ -89,7 +95,6 @@ public class FoodChecker : MonoBehaviour
                 essenDaFleisch = false;
                 FoodKombo_C.KomboMoeglich = false;
             }
-
         }
 
         if (essenDaInedible == true)
@@ -98,19 +103,16 @@ public class FoodChecker : MonoBehaviour
             {
                 Point_C.Points += PointMulti * 10;
                 essenDaInedible = false;
-                updateAnimation("bThrow");
+                goRejectedInedible = Instantiate (Resources.Load ("RejectedInedible", typeof(GameObject))) as GameObject;
+                updateAnimation("bReturn");
                 Destroy(currentFood);
                 FoodKombo_C.KomboAnzahl++;
             }
             if (Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.W))
             {
                 Destroy(currentFood);
-                updateAnimation("bEat");
-                FoodBar_C.barLenght += 10;
-                essenDaInedible = false;
-                FoodKombo_C.KomboMoeglich = false;
+                Time.timeScale = 0;
             }
-
         }
 
         if (essenDaDessert == true)
@@ -125,7 +127,7 @@ public class FoodChecker : MonoBehaviour
 
     }
 
-    void updateAnimation(string strNewAni) {
+    public void updateAnimation(string strNewAni) {
     	if(strNewAni != "bPour") {
     		eaterAnim.SetBool("bPour", false);
     	}
@@ -135,9 +137,15 @@ public class FoodChecker : MonoBehaviour
     	if(strNewAni != "bThrow") {
     		eaterAnim.SetBool("bThrow", false);
     	}
+        if(strNewAni != "bReturn") {
+            eaterAnim.SetBool("bReturn", false);
+        }
     	if(strNewAni != "bFeed") {
     		eaterAnim.SetBool("bFeed", false);
     	}
+        if(strNewAni != "bGoodFood") {
+            eaterAnim.SetBool("bGoodFood", false);
+        }
     	if(strNewAni != "bIdle") {
     		eaterAnim.SetBool("bIdle", false);
     		StartCoroutine(BackToIdle());
