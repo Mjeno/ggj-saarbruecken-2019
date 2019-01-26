@@ -22,7 +22,7 @@ public class FoodBar_C : MonoBehaviour
 
         if(timer >= 1)
         {
-            barLenght -= 5f;
+            barLenght -= 1.5f;
             timer = 0f;
         }
 
@@ -31,11 +31,11 @@ public class FoodBar_C : MonoBehaviour
             barLenght = 0;
         }
 
-        if(trueBarLenght >= 1)
+        if(barLenght >= 100)
         {
-            Debug.Log("Verloren");
+            barLenght = 100;
+            //GameOver Screen
         }
-
 
         trueBarLenght = barLenght / 100f;
         gameObject.transform.localScale = new Vector3(trueBarLenght, 1, 1);
