@@ -95,8 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GOHand: {fileID: 3360111023697882117, guid: 97f24840059347347b64d3b3e2c412e4, type: 3}
-  GOCatSpawn: {fileID: 2843733571180423861, guid: c1aaa4a42ee9fa04588f0961d71cca8c,
-    type: 3}
+  GOCatSpawn: {fileID: 0}
   BSpawnedRight: 1
 --- !u!58 &237142366859182962
 CircleCollider2D:

@@ -27,17 +27,13 @@ public class Cat_Enconuter : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
         if(collision.gameObject.name == GOHand.name)
         {
-            Debug.Log("Cat hitted by Hand.");
             if ((collision.gameObject.GetComponent<Hand>().BHandSlapR && BSpawnedRight) || (collision.gameObject.GetComponent<Hand>().BHandSlapL && !BSpawnedRight))
             {
-
-
+                Debug.Log("Cat hit by Hand.");
                 GOCatSpawn.GetComponent<Cat_Spawn>().StartNextCat();
                 Destroy(this.gameObject);
-                
             }
 
         }

@@ -14,13 +14,10 @@ public class Hand : MonoBehaviour
     public float fMausSpeedKap;
     bool bBlockHand;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
         V3HandKeyPos = transform.position;
-        
     }
 
     // Update is called once per frame
