@@ -58,14 +58,15 @@ public class Cat_Spawn : MonoBehaviour
             GameObject cat = Instantiate(GOCat, TrCatSpawnL);
             cat.GetComponent<Cat_Enconuter>().GOCatSpawn = gameObject;
             cat.GetComponent<Cat_Enconuter>().BSpawnedRight = false;
-            cat.GetComponent<Cat_Enconuter>().V2Destination = new Vector2(-4, -1.75f);
+            cat.GetComponent<SpriteRenderer>().flipX = true;
+            cat.GetComponent<Cat_Enconuter>().V2Destination = new Vector2(-2, -1);
         }
         else
         {
             GameObject cat = Instantiate(GOCat, TrCatSpawnR);
             cat.GetComponent<Cat_Enconuter>().GOCatSpawn = gameObject;
             cat.GetComponent<Cat_Enconuter>().BSpawnedRight = true;
-            cat.GetComponent<Cat_Enconuter>().V2Destination = new Vector2(4, -1.75f);
+            cat.GetComponent<Cat_Enconuter>().V2Destination = new Vector2(2, -1);
         }
     }
         

@@ -37,6 +37,7 @@ public class Cat_Enconuter : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<Hand>().BHandSlapL && BSpawnedRight) 
             {
+                this.GetComponent<Animator>().SetBool("cat-pushed", true);
                 Debug.Log("collision.gameObject.GetComponent<Hand>().BHandSlapR && !BSpawnedRight");
                 rb.isKinematic = false;
                 V2Kick = new Vector2(Random.Range(FCatSlaySpeed, FCatSlaySpeed*2), Random.Range(-FCatSlaySpeed*0.5f, FCatSlaySpeed * 0.5f));
@@ -44,6 +45,7 @@ public class Cat_Enconuter : MonoBehaviour
                 destroyCat();
             } else if(collision.gameObject.GetComponent<Hand>().BHandSlapR && !BSpawnedRight)
             {
+                this.GetComponent<Animator>().SetBool("cat-pushed", true);
                 Debug.Log("collision.gameObject.GetComponent<Hand>().BHandSlapL && BSpawnedRight");
                 rb.isKinematic = false;
                 V2Kick = new Vector2(Random.Range(-FCatSlaySpeed * 2, -FCatSlaySpeed), Random.Range(-FCatSlaySpeed * 0.5f, FCatSlaySpeed * 0.5f));
