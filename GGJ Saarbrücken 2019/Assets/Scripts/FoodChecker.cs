@@ -5,17 +5,23 @@ using UnityEngine;
 public class FoodChecker : MonoBehaviour
 {
     //Hilfe bei der Collisionsabfrage
-    public static bool  essenDaTrinken; 
-    public static bool  essenDaVeggie; 
+    public static bool essenDaTrinken; 
+    public static bool essenDaVeggie; 
     public static bool essenDaFleisch; 
     public static bool essenDaInedible;
     public static bool essenDaDessert;
-  
+
+    Animator eaterAnim;
+
     //Hilfe bei der ExitCollisionsabfrage
     public Sprite[] Sprites;
     private GameObject currentFood;
 
     public float FoodmeterDazu =10f;
+
+    void Start() {
+    	eaterAnim = this.GetComponent<Animator>();
+    }
 
     private void Update()
     {
@@ -27,18 +33,17 @@ public class FoodChecker : MonoBehaviour
             {
                 essenDaTrinken = false;
                 Point_C.Points += 10;
+                updateAnimation("bPour");
                 Destroy(currentFood);
             }
 
-            if(Input.GetKeyDown(KeyCode.L)|| Input.GetKeyDown(KeyCode.S)|| Input.GetKeyDown(KeyCode.K))
+            if(Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.K))
             {
-                Debug.Log("Miep");
                 Destroy(currentFood);
+                updateAnimation("bEat");
                 FoodBar_C.barLenght += 10;
                 essenDaTrinken = false;
-
             }
-
         }
 
         if(essenDaVeggie == true)
@@ -47,6 +52,7 @@ public class FoodChecker : MonoBehaviour
             { 
                 Point_C.Points += 10;
                 essenDaVeggie = false;
+                updateAnimation("bThrow");
                 Destroy(currentFood);
                 
             }
@@ -54,10 +60,10 @@ public class FoodChecker : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.K))
             {
                 Destroy(currentFood);
+                updateAnimation("bEat");
                 FoodBar_C.barLenght += 10;
                 essenDaVeggie = false;
             }
-
         }
 
         if(essenDaFleisch == true)
@@ -66,12 +72,14 @@ public class FoodChecker : MonoBehaviour
             {
                 Point_C.Points += 10;
                 essenDaFleisch = false;
+                updateAnimation("bFeed");
                 Destroy(currentFood);
                 
             }
             if (Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.K))
             {
                 Destroy(currentFood);
+                updateAnimation("bEat");
                 FoodBar_C.barLenght += 10;
                 essenDaFleisch = false;
             }
@@ -84,12 +92,14 @@ public class FoodChecker : MonoBehaviour
             {
                 Point_C.Points += 10;
                 essenDaInedible = false;
+                updateAnimation("bThrow");
                 Destroy(currentFood);
                 
             }
             if (Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.W))
             {
                 Destroy(currentFood);
+                updateAnimation("bEat");
                 FoodBar_C.barLenght += 10;
                 essenDaInedible = false;
             }
@@ -102,12 +112,35 @@ public class FoodChecker : MonoBehaviour
             {
                 essenDaDessert = false;
                 Destroy(currentFood);
-
             }
         }
 
     }
 
+    void updateAnimation(string strNewAni) {
+    	if(strNewAni != "bPour") {
+    		eaterAnim.SetBool("bPour", false);
+    	}
+    	if(strNewAni != "bEat") {
+    		eaterAnim.SetBool("bEat", false);
+    	}
+    	if(strNewAni != "bThrow") {
+    		eaterAnim.SetBool("bThrow", false);
+    	}
+    	if(strNewAni != "bFeed") {
+    		eaterAnim.SetBool("bFeed", false);
+    	}
+    	if(strNewAni != "bIdle") {
+    		eaterAnim.SetBool("bIdle", false);
+    		StartCoroutine(BackToIdle());
+    	}
+    	eaterAnim.SetBool(strNewAni, true);
+    }
+
+    IEnumerator BackToIdle() {
+    	yield return new WaitForSeconds(0.3f);
+    	updateAnimation("bIdle");
+    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
