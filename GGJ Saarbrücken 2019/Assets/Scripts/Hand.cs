@@ -8,6 +8,7 @@ public class Hand : MonoBehaviour
     public bool BHandSlapL = false;
     public bool BHandSlapR = false;
     public Sprite SSpriteKeys;
+    public Sprite SSpriteMove;
     public Sprite SSpriteSlapRight;
     public Sprite SSpriteSlapLeft;
     public float fMausSpeed = 0.5f;
@@ -39,6 +40,7 @@ public class Hand : MonoBehaviour
 
         if (transform.position != V3HandKeyPos)
         {
+            
             if (Input.GetKey(KeyCode.Mouse0))
             {
 
@@ -61,6 +63,7 @@ public class Hand : MonoBehaviour
                 {
                     BHandSlapL = false;
                     BHandSlapR = false;
+                    GetComponentInChildren<SpriteRenderer>().sprite = SSpriteMove;
                 }
             }
             else if (Input.GetKeyUp(KeyCode.Mouse0))
