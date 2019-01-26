@@ -9,8 +9,8 @@ public class FoodChecker : MonoBehaviour
     public static bool  essenDaVeggie; 
     public static bool essenDaFleisch; 
     public static bool essenDaInedible;
-    //SweetSpot
-    public static bool onSweatSpot = false;
+    public static bool essenDaDessert;
+  
     //Hilfe bei der ExitCollisionsabfrage
     public Sprite[] Sprites;
     private GameObject currentFood;
@@ -28,8 +28,17 @@ public class FoodChecker : MonoBehaviour
                 essenDaTrinken = false;
                 Point_C.Points += 10;
                 Destroy(currentFood);
-                onSweatSpot = true;
             }
+
+            if(Input.GetKeyDown(KeyCode.L)|| Input.GetKeyDown(KeyCode.S)|| Input.GetKeyDown(KeyCode.K))
+            {
+                Debug.Log("Miep");
+                Destroy(currentFood);
+                FoodBar_C.barLenght += 10;
+                essenDaTrinken = false;
+
+            }
+
         }
 
         if(essenDaVeggie == true)
@@ -39,8 +48,16 @@ public class FoodChecker : MonoBehaviour
                 Point_C.Points += 10;
                 essenDaVeggie = false;
                 Destroy(currentFood);
-                StayedOnSweatSpot();
+                
             }
+
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.K))
+            {
+                Destroy(currentFood);
+                FoodBar_C.barLenght += 10;
+                essenDaVeggie = false;
+            }
+
         }
 
         if(essenDaFleisch == true)
@@ -50,8 +67,15 @@ public class FoodChecker : MonoBehaviour
                 Point_C.Points += 10;
                 essenDaFleisch = false;
                 Destroy(currentFood);
-                StayedOnSweatSpot();
+                
             }
+            if (Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.K))
+            {
+                Destroy(currentFood);
+                FoodBar_C.barLenght += 10;
+                essenDaFleisch = false;
+            }
+
         }
 
         if (essenDaInedible == true)
@@ -61,12 +85,26 @@ public class FoodChecker : MonoBehaviour
                 Point_C.Points += 10;
                 essenDaInedible = false;
                 Destroy(currentFood);
-                StayedOnSweatSpot();
+                
+            }
+            if (Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.W))
+            {
+                Destroy(currentFood);
+                FoodBar_C.barLenght += 10;
+                essenDaInedible = false;
+            }
+
+        }
+
+        if (essenDaDessert == true)
+        {
+            if (Input.GetKeyDown(KeyCode.W)|| Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.K))
+            {
+                essenDaDessert = false;
+                Destroy(currentFood);
+
             }
         }
-        
-
-
 
     }
 
@@ -97,19 +135,15 @@ public class FoodChecker : MonoBehaviour
                 case (Meal.mealType.inedible):
                     essenDaInedible = true; break;
 
+                case (Meal.mealType.dessert):
+                    essenDaDessert = true;
+                    break;
 
             }
    
         }
     }
 
-    void StayedOnSweatSpot()
-    {
-        if(onSweatSpot == true)
-        {
-            Point_C.Points += 20;
-            onSweatSpot = false;
-        }
-    }
+   
 
 }
