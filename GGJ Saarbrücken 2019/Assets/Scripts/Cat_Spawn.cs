@@ -10,6 +10,8 @@ public class Cat_Spawn : MonoBehaviour
     public GameObject GOCat;
     public Transform TrCatSpawnL;
     public Transform TrCatSpawnR;
+    public Transform TrCatDesL;
+    public Transform TrCatDesR;
     static bool BCatSpawned;
 
     // Start is called before the first frame update
@@ -60,12 +62,14 @@ public class Cat_Spawn : MonoBehaviour
             GameObject cat = Instantiate(GOCat, TrCatSpawnL);
             cat.GetComponent<Cat_Enconuter>().GOCatSpawn = gameObject;
             cat.GetComponent<Cat_Enconuter>().BSpawnedRight = false;
+            cat.GetComponent<Cat_Enconuter>().V2Destination = new Vector2(-4, -4);
         }
-        else 
+        else
         {
             GameObject cat = Instantiate(GOCat, TrCatSpawnR);
             cat.GetComponent<Cat_Enconuter>().GOCatSpawn = gameObject;
             cat.GetComponent<Cat_Enconuter>().BSpawnedRight = true;
+            cat.GetComponent<Cat_Enconuter>().V2Destination = new Vector2(4, -4);
         }
     }
         
