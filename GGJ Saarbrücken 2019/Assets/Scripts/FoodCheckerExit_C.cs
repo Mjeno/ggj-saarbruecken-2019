@@ -18,7 +18,7 @@ public class FoodCheckerExit_C : MonoBehaviour
                 switch (collision.gameObject.GetComponent<Meal>().currentType)
                     {
                     case (Meal.mealType.drink):
-                        FoodBar_C.barLenght += 10;
+                        FoodBar_C.barLenght += 20;
                         FoodChecker.essenDaTrinken = false;
                         FoodKombo_C.KomboMoeglich = false;
                         Destroy(collision.gameObject);
@@ -27,7 +27,7 @@ public class FoodCheckerExit_C : MonoBehaviour
                         break;
             
                     case (Meal.mealType.veggie):
-                        FoodBar_C.barLenght += 10;
+                        FoodBar_C.barLenght += 20;
                         FoodChecker.essenDaVeggie = false;
                         FoodKombo_C.KomboMoeglich = false;
                         Destroy(collision.gameObject);
@@ -36,7 +36,7 @@ public class FoodCheckerExit_C : MonoBehaviour
                         break;
             
                     case (Meal.mealType.meat):
-                        FoodBar_C.barLenght += 10;
+                        FoodBar_C.barLenght += 20;
                         FoodChecker.essenDaFleisch = false;
                         FoodKombo_C.KomboMoeglich = false;
                         Destroy(collision.gameObject);
