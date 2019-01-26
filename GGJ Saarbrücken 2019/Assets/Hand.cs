@@ -12,6 +12,7 @@ public class Hand : MonoBehaviour
     public Sprite SSpriteSlapLeft;
     public float fMausSpeed = 0.5f;
     public float fMausSpeedKap;
+    public float fHandPower;
     bool bBlockHand;
 
     // Start is called before the first frame update
@@ -25,7 +26,6 @@ public class Hand : MonoBehaviour
     {
         float MausH = fMausSpeed * Input.GetAxis("Mouse X");
         float MausV = fMausSpeed * Input.GetAxis("Mouse Y");
-        float MausSpeed = MausH + MausV;
 
         if (Input.GetKey(KeyCode.K) || Input.GetKey(KeyCode.L))
         {
@@ -39,27 +39,26 @@ public class Hand : MonoBehaviour
 
         if (transform.position != V3HandKeyPos)
         {
-
             if (Input.GetKey(KeyCode.Mouse0))
             {
 
                 if (MausH < 0)
                 {
                     GetComponentInChildren<SpriteRenderer>().sprite = SSpriteSlapLeft;
-                    BHandSlapL = true;
-                    BHandSlapR = false;
+                    BHandSlapL = false;
+                    BHandSlapR = true;
                     //Debug.Log("Hand Slap Left.");
+                    
                 }
                 else if (MausH > 0)
                 {
                     GetComponentInChildren<SpriteRenderer>().sprite = SSpriteSlapRight;
-                    BHandSlapL = false;
-                    BHandSlapR = true;
+                    BHandSlapL = true;
+                    BHandSlapR = false;
                     //Debug.Log("Hand Slap Right.");
                 }
                 else
                 {
-
                     BHandSlapL = false;
                     BHandSlapR = false;
                 }
@@ -67,28 +66,15 @@ public class Hand : MonoBehaviour
             else if (Input.GetKeyUp(KeyCode.Mouse0))
             {
                 GetComponentInChildren<SpriteRenderer>().sprite = SSpriteKeys;
-            }
-
-                
-          
+                BHandSlapL = false;
+                BHandSlapR = false;
+            } 
         }
-
-
-
-
         if (!bBlockHand)
         {
             transform.Translate(MausH, MausV, 0); 
         }
-       
-        
-
-        
-
     }
-
-
-
     void ResetHand()
     {
         Debug.Log("Hand wird zurück gesetztz");
