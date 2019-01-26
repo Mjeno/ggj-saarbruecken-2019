@@ -20,6 +20,7 @@ public class FoodCheckerExit_C : MonoBehaviour
                     FoodChecker.essenDaTrinken = false;
                     FoodKombo_C.KomboMoeglich = false;
                     Destroy(collision.gameObject);
+                    FoodKombo_C.KomboMoeglich = false;
 
                     break;
 
@@ -28,7 +29,7 @@ public class FoodCheckerExit_C : MonoBehaviour
                     FoodChecker.essenDaVeggie = false;
                     FoodKombo_C.KomboMoeglich = false;
                     Destroy(collision.gameObject);
-
+                    FoodKombo_C.KomboMoeglich = false;
                     break;
 
                 case (Meal.mealType.meat):
@@ -36,7 +37,7 @@ public class FoodCheckerExit_C : MonoBehaviour
                     FoodChecker.essenDaFleisch = false;
                     FoodKombo_C.KomboMoeglich = false;
                     Destroy(collision.gameObject);
-
+                    FoodKombo_C.KomboMoeglich = false;
                     break;
 
                 case (Meal.mealType.inedible):
@@ -44,12 +45,12 @@ public class FoodCheckerExit_C : MonoBehaviour
                     FoodChecker.essenDaInedible = false;
                     FoodKombo_C.KomboMoeglich = false;
                     Destroy(collision.gameObject);
-
+                    FoodKombo_C.KomboMoeglich = false;
                     break;
 
                 case (Meal.mealType.dessert):
                     FoodChecker.essenDaDessert = false;
-                    Point_C.Points += 20;
+                    Point_C.Points += FoodChecker.PointMulti *20;
                     FoodKombo_C.KomboAnzahl++;
                     Destroy(collision.gameObject); break;
 
