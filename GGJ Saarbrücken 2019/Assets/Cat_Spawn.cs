@@ -10,42 +10,42 @@ public class Cat_Spawn : MonoBehaviour
     public GameObject GOCat;
     public Transform TrCatSpawnL;
     public Transform TrCatSpawnR;
-    bool BCatSpawned;
-    float FCatTimeGenerated;
-
+    static bool BCatSpawned;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartNextCat();
+        NextCatTime = GetNextCatTime();
     }
 
     // Update is called once per frame
     void Update()
     {
-     
-
-        if(NextCatTime > 0f)
+        if(NextCatTime > 0f && !BCatSpawned)
         {
             NextCatTime -= Time.deltaTime;
+            Debug.Log("NextCatTime -= Time.deltaTime: " + (NextCatTime -= Time.deltaTime));
         }
         else if (NextCatTime <= 0f && !BCatSpawned)
         {
+            Debug.Log("Setting to true");
             BCatSpawned = true;
             SpawnCat();
+            NextCatTime = GetNextCatTime();
         }
-
+            
 
     }
 
     //Setzt die Zeit bis die Katze das nächste man kommt
     float GetNextCatTime()
     {
+        float FCatTimeGenerated;
         Debug.Log("Nächste CatTime wird generiert.");
 
         FCatTimeGenerated = Random.Range(FCatSpawnTimeMIN, FCatSpawnTimeMAX);
         Debug.Log("Nächste CatTime ist: " + FCatTimeGenerated + ".");
-
+        NextCatTime = FCatTimeGenerated;
         return FCatTimeGenerated;
     }
 
@@ -55,25 +55,21 @@ public class Cat_Spawn : MonoBehaviour
 
         if(Random.Range(-1, 1) < 0)
         {
-            Instantiate(GOCat, TrCatSpawnL);
+            GameObject cat = Instantiate(GOCat, TrCatSpawnL);
+            cat.GetComponent<Cat_Enconuter>().GOCatSpawn = gameObject;
             GOCat.GetComponent<Cat_Enconuter>().BSpawnedRight = false;
         }
         else
         {
-            Instantiate(GOCat, TrCatSpawnR);
+            GameObject cat = Instantiate(GOCat, TrCatSpawnR);
+            cat.GetComponent<Cat_Enconuter>().GOCatSpawn = gameObject;
             GOCat.GetComponent<Cat_Enconuter>().BSpawnedRight = true;
         }
-        
-
-
     }
         
-    
     public void StartNextCat()
     {
-        NextCatTime = GetNextCatTime();
-        Debug.Log("Cat Reset("+ NextCatTime +")");
         BCatSpawned = false;
-
+        Debug.Log("Start next cat.");
     }
 }
