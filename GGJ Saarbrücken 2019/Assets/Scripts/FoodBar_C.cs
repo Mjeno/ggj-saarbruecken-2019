@@ -34,7 +34,7 @@ public class FoodBar_C : MonoBehaviour
         if(barLenght >= 100)
         {
             barLenght = 100;
-            //GameOver Screen
+            Time.timeScale = 0;
         }
 
         trueBarLenght = barLenght / 100f;
