@@ -43,7 +43,8 @@ public class FoodCheckerExit_C : MonoBehaviour
                     break;
 
                 case (Meal.mealType.dessert):
-                    Point_C.Points += 20;
+                    FoodChecker.essenDaDessert = false;
+                    Point_C.Points += 20; 
                     Destroy(collision.gameObject); break;
 
 

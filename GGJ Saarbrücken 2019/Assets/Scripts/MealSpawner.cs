@@ -15,7 +15,7 @@ public class MealSpawner : MonoBehaviour
 
     void Update()
     {
-    	Debug.Log("Time.time: " + Time.time);
+    	//Debug.Log("Time.time: " + Time.time);
     	if (Time.time > 10 && Time.time < 20 && !bStageTwo) {
     		StopCoroutine(SpawningRoutine);
     		SpawningRoutine = StartCoroutine("SpawnMeal", 2f);
