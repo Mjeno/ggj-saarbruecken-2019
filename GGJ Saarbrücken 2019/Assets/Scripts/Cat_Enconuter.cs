@@ -16,6 +16,9 @@ public class Cat_Enconuter : MonoBehaviour
     Animator catAnim;
     float fSpeed;
 
+    public AudioSource ASCatIdl;
+    public AudioSource ASCatFly;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -27,6 +30,7 @@ public class Cat_Enconuter : MonoBehaviour
             BSpawnedRight = true;
         }
         StartCoroutine(WalkToTarget());
+        StartCoroutine(CatSounds());
     }
 
     // Update is called once per frame
@@ -61,6 +65,7 @@ public class Cat_Enconuter : MonoBehaviour
                 rb.isKinematic = false;
                 V2Kick = new Vector2(Random.Range(FCatSlaySpeed, FCatSlaySpeed*2), Random.Range(-FCatSlaySpeed*0.5f, FCatSlaySpeed * 0.5f));
                 rb.velocity = V2Kick;
+                ASCatFly.Play();
                 destroyCat();
             } else if(collision.gameObject.GetComponent<Hand>().BHandSlapR && !BSpawnedRight)
             {
@@ -70,6 +75,7 @@ public class Cat_Enconuter : MonoBehaviour
                 rb.isKinematic = false;
                 V2Kick = new Vector2(Random.Range(-FCatSlaySpeed * 2, -FCatSlaySpeed), Random.Range(-FCatSlaySpeed * 0.5f, FCatSlaySpeed * 0.5f));
                 rb.velocity = V2Kick;
+                ASCatFly.Play();
                 destroyCat();
             }
         }
@@ -86,6 +92,15 @@ public class Cat_Enconuter : MonoBehaviour
     {
         yield return new WaitForSeconds(secs);
         Destroy(gameObject);
+    }
+
+    private IEnumerator CatSounds()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(3,8));
+            ASCatIdl.Play();
+        }
     }
 
 }

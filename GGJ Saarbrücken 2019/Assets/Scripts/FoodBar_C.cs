@@ -42,4 +42,6 @@ public class FoodBar_C : MonoBehaviour
         gameObject.transform.localScale = new Vector3(trueBarLenght, 1, 1);
 
     }
+
+
 }

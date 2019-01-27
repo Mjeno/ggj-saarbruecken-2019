@@ -5,6 +5,9 @@ using UnityEngine;
 public class FoodCheckerExit_C : MonoBehaviour
 {
     GameObject goPlayer;
+    public AudioSource ASFail;
+    public AudioSource ASPerdect;
+
 
     void Start() {
         goPlayer = GameObject.Find("FoodChecker");
@@ -24,6 +27,7 @@ public class FoodCheckerExit_C : MonoBehaviour
                         Destroy(collision.gameObject);
                         FoodKombo_C.KomboMoeglich = false;
                         goPlayer.GetComponent<FoodChecker>().updateAnimation("bEat");
+                        ASFail.Play();
                         break;
             
                     case (Meal.mealType.veggie):
@@ -33,6 +37,7 @@ public class FoodCheckerExit_C : MonoBehaviour
                         Destroy(collision.gameObject);
                         FoodKombo_C.KomboMoeglich = false;
                         goPlayer.GetComponent<FoodChecker>().updateAnimation("bEat");
+                        ASFail.Play();
                         break;
             
                     case (Meal.mealType.meat):
@@ -42,6 +47,7 @@ public class FoodCheckerExit_C : MonoBehaviour
                         Destroy(collision.gameObject);
                         FoodKombo_C.KomboMoeglich = false;
                         goPlayer.GetComponent<FoodChecker>().updateAnimation("bEat");
+                        ASFail.Play();
                         break;
             
                     case (Meal.mealType.inedible):
@@ -51,6 +57,7 @@ public class FoodCheckerExit_C : MonoBehaviour
                         Destroy(collision.gameObject);
                         FoodKombo_C.KomboMoeglich = false;
                         goPlayer.GetComponent<FoodChecker>().updateAnimation("bEat");
+                        ASFail.Play();
                         break;
             
                     case (Meal.mealType.dessert):
@@ -58,8 +65,12 @@ public class FoodCheckerExit_C : MonoBehaviour
                         Point_C.Points += FoodChecker.PointMulti *20;
                         FoodKombo_C.KomboAnzahl++;
                         goPlayer.GetComponent<FoodChecker>().updateAnimation("bGoodFood");
-                        Destroy(collision.gameObject); break;
+                        Destroy(collision.gameObject);
+                        ASPerdect.Play();
+                        break;
                     }
+            
         }
     }
+
 }
