@@ -42,13 +42,13 @@ public class FoodKombo_C : MonoBehaviour
             ForKombo.color = Color.yellow;
         }
 
-        if (KomboAnzahl >= 20 && KomboAnzahl <= 30)
+        if (KomboAnzahl >= 30 && KomboAnzahl <= 40)
         {
             FoodChecker.PointMulti = 4;
             ForKombo.color = new Color(241, 127, 67);
         }
 
-        if (KomboAnzahl >= 20 && KomboAnzahl <= 30)
+        if (KomboAnzahl >= 40 && KomboAnzahl <= 50)
         {
             FoodChecker.PointMulti = 5;
             ForKombo.color = Color.red;

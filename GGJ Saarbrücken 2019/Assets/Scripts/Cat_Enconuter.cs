@@ -81,7 +81,7 @@ public class Cat_Enconuter : MonoBehaviour
         }
     }
 
-    void destroyCat()
+    public void destroyCat()
     {
         Debug.Log("Cat hit by Hand.");
         GOCatSpawn.GetComponent<Cat_Spawn>().StartNextCat();
