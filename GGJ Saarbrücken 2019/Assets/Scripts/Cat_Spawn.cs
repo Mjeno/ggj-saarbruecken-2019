@@ -12,6 +12,13 @@ public class Cat_Spawn : MonoBehaviour
     public Transform TrCatSpawnR;
     static bool BCatSpawned;
 
+    void Awake() {
+    	BCatSpawned = false;
+    	/*if(GOCat) {
+    		GOCat.GetComponent<Cat_Enconuter>().destroyCat();
+    	}*/
+    }
+
     // Start is called before the first frame update
     void Start()
     {
