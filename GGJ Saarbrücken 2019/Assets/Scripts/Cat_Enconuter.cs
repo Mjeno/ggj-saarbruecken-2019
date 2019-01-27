@@ -13,22 +13,40 @@ public class Cat_Enconuter : MonoBehaviour
     public float FCatSlaySpeed = 5;
     Vector2 V2Kick;
     public Vector2 V2Destination;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
+    Animator catAnim;
+    float fSpeed;
 
     private void Awake()
     {
-       
+        rb = GetComponent<Rigidbody2D>();
+        fSpeed = 0.1f;
+        catAnim = this.GetComponent<Animator>();
+        if(this.transform.position.x < V2Destination.x) {
+            BSpawnedRight = false;
+        } else {
+            BSpawnedRight = true;
+        }
+        StartCoroutine(WalkToTarget());
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, V2Destination, 0.1f);        
+
+        if(Time.time > 20 && Time.time < 30) {
+            fSpeed = 0.125f;
+        }
+        if(Time.time > 30 && Time.time < 60) {
+            fSpeed = 0.175f;
+        }
+    }
+
+    IEnumerator WalkToTarget() {
+        while ((this.transform.position.x < V2Destination.x && !BSpawnedRight) || (this.transform.position.x > V2Destination.x && BSpawnedRight)) {
+            transform.position = Vector2.MoveTowards(transform.position, V2Destination, fSpeed);
+            yield return 1;
+        }
+        catAnim.SetBool("standing", true);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -37,7 +55,8 @@ public class Cat_Enconuter : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<Hand>().BHandSlapL && BSpawnedRight) 
             {
-                this.GetComponent<Animator>().SetBool("cat-pushed", true);
+                catAnim.SetBool("standing", false);
+                catAnim.SetBool("cat-pushed", true);
                 Debug.Log("collision.gameObject.GetComponent<Hand>().BHandSlapR && !BSpawnedRight");
                 rb.isKinematic = false;
                 V2Kick = new Vector2(Random.Range(FCatSlaySpeed, FCatSlaySpeed*2), Random.Range(-FCatSlaySpeed*0.5f, FCatSlaySpeed * 0.5f));
@@ -45,7 +64,8 @@ public class Cat_Enconuter : MonoBehaviour
                 destroyCat();
             } else if(collision.gameObject.GetComponent<Hand>().BHandSlapR && !BSpawnedRight)
             {
-                this.GetComponent<Animator>().SetBool("cat-pushed", true);
+                catAnim.SetBool("standing", false);
+                catAnim.SetBool("cat-pushed", true);
                 Debug.Log("collision.gameObject.GetComponent<Hand>().BHandSlapL && BSpawnedRight");
                 rb.isKinematic = false;
                 V2Kick = new Vector2(Random.Range(-FCatSlaySpeed * 2, -FCatSlaySpeed), Random.Range(-FCatSlaySpeed * 0.5f, FCatSlaySpeed * 0.5f));
@@ -53,7 +73,6 @@ public class Cat_Enconuter : MonoBehaviour
                 destroyCat();
             }
         }
-        
     }
 
     void destroyCat()

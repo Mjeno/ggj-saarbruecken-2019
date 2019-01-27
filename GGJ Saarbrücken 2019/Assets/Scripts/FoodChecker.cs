@@ -48,7 +48,7 @@ public class FoodChecker : MonoBehaviour
             {
                 Destroy(currentFood);
                 updateAnimation("bEat");
-                FoodBar_C.barLenght += 20;
+                FoodBar_C.barLenght += 30;
                 essenDaTrinken = false;
                 FoodKombo_C.KomboMoeglich = false;
             }
@@ -91,7 +91,7 @@ public class FoodChecker : MonoBehaviour
             {
                 Destroy(currentFood);
                 updateAnimation("bEat");
-                FoodBar_C.barLenght += 20;
+                FoodBar_C.barLenght += 30;
                 essenDaFleisch = false;
                 FoodKombo_C.KomboMoeglich = false;
             }

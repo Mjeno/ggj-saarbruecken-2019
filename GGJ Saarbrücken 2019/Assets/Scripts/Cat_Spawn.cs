@@ -33,8 +33,6 @@ public class Cat_Spawn : MonoBehaviour
             SpawnCat();
             NextCatTime = GetNextCatTime();
         }
-            
-
     }
 
     //Setzt die Zeit bis die Katze das nächste man kommt
