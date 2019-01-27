@@ -4896,11 +4896,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7016638179442420364, guid: 79bcb670afa3ad341a4666a0f83167be,
-        type: 3}
-      propertyPath: m_Name
-      value: Dog
-      objectReference: {fileID: 0}
     - target: {fileID: 7016638179442420354, guid: 79bcb670afa3ad341a4666a0f83167be,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4955,6 +4950,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7016638179442420364, guid: 79bcb670afa3ad341a4666a0f83167be,
+        type: 3}
+      propertyPath: m_Name
+      value: Dog
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79bcb670afa3ad341a4666a0f83167be, type: 3}
@@ -5298,6 +5298,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21e0c716edf659a41aadb66612c885df, type: 3}
+--- !u!1 &326085372 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8439097478632980738, guid: 21e0c716edf659a41aadb66612c885df,
+    type: 3}
+  m_PrefabInstance: {fileID: 326085371}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &326085373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326085372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9986441867fc0540bac101916c4d0a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &671693608
 GameObject:
   m_ObjectHideFlags: 0
@@ -5792,11 +5810,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4444682661315711538, guid: 4873d36a46e962345bc721d28d2ba0bf,
-        type: 3}
-      propertyPath: m_Name
-      value: Grandma
-      objectReference: {fileID: 0}
     - target: {fileID: 4444682661315711536, guid: 4873d36a46e962345bc721d28d2ba0bf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5851,6 +5864,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444682661315711538, guid: 4873d36a46e962345bc721d28d2ba0bf,
+        type: 3}
+      propertyPath: m_Name
+      value: Grandma
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4873d36a46e962345bc721d28d2ba0bf, type: 3}

@@ -7,13 +7,15 @@ public class GameOver : MonoBehaviour
 {
     public static bool GameOverNow= false;
 
+
     private void Update()
     {
         
     if(GameOverNow == true)
         {
-            SceneManager.LoadScene("GameOver");
             GameOverNow = false;
+            SceneManager.LoadScene("GameOver");
+       
         }
 
     }

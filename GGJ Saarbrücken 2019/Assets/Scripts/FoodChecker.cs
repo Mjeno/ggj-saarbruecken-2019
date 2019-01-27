@@ -111,7 +111,7 @@ public class FoodChecker : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.W))
             {
                 Destroy(currentFood);
-                Time.timeScale = 0;
+                GameOver.GameOverNow = true;
             }
         }
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FoodCheckerExit_C : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class FoodCheckerExit_C : MonoBehaviour
 
     void Start() {
         goPlayer = GameObject.Find("FoodChecker");
+        SceneManager.UnloadSceneAsync("GameOver");
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -45,7 +47,7 @@ public class FoodCheckerExit_C : MonoBehaviour
                         break;
             
                     case (Meal.mealType.inedible):
-                        Time.timeScale = 0;
+                        GameOver.GameOverNow = true;
                         FoodChecker.essenDaInedible = false;
                         FoodKombo_C.KomboMoeglich = false;
                         Destroy(collision.gameObject);
