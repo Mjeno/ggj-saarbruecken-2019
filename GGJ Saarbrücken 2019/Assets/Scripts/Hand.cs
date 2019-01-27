@@ -19,6 +19,7 @@ public class Hand : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+    	Cursor.visible = false;
         V3HandKeyPos = transform.position;
     }
 
@@ -86,6 +87,4 @@ public class Hand : MonoBehaviour
         transform.position = V3HandKeyPos;
         GetComponentInChildren<SpriteRenderer>().sprite = SSpriteKeys;
     }
-
-
 }
