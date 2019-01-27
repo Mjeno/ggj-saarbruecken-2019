@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4444682661315711536}
   - component: {fileID: 4444682661315711537}
   - component: {fileID: 4444682661315711551}
+  - component: {fileID: 413124710}
   m_Layer: 0
   m_Name: Grandma
   m_TagString: Untagged
@@ -88,14 +89,26 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a7d662abc32c04a43b06af0a06d34856, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e4f520b20c285cc498463d0f907ac98e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.71875, y: 2.3125}
+  m_Size: {x: 2.5, y: 2.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &413124710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4444682661315711538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18e9aed394df9394d933cdd0fd8d2646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

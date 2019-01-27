@@ -60,24 +60,42 @@ public class Meal : MonoBehaviour
     }
 
     mealType RandomizeMealType() {
-    	int iMealType = Random.Range(0,5);
+    	int iMealType = Random.Range(0,11);
     	switch (iMealType) 
     	{
     		case(0):
     			return mealType.drink;
     			break;
     		case(1):
-    			return mealType.inedible;
+    			return mealType.drink;
     			break;
     		case(2):
-    			return mealType.veggie;
+    			return mealType.drink;
     			break;
     		case(3):
     			return mealType.meat;
     			break;
-    		default:
-    		  	return mealType.dessert;
-    			break;
+            case(4):
+                return mealType.meat;
+                break;
+            case(5):
+                return mealType.meat;
+                break;
+            case(6):
+                return mealType.veggie;
+                break;
+            case(7):
+                return mealType.veggie;
+                break;
+            case(8):
+                return mealType.veggie;
+                break;
+            case(9):
+                return mealType.dessert;
+                break;
+            default:
+                return mealType.inedible;
+                break;
     	}
     }
 
