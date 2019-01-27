@@ -10,6 +10,12 @@ public class MealSpawner : MonoBehaviour
     Animator animGrandma;
 
     // Start is called before the first frame update
+    void Awake() {
+        if (SpawningRoutine != null) {
+            StopCoroutine(SpawningRoutine);
+        }
+    }
+
     void Start()
     {
         SpawningRoutine = StartCoroutine("SpawnMeal", 2.5f);
@@ -18,26 +24,26 @@ public class MealSpawner : MonoBehaviour
 
     void Update()
     {
-    	//Debug.Log("Time.time: " + Time.time);
-    	if (Time.time > 15 && Time.time < 30 && !bStageTwo) {
+    	//Debug.Log("Time.timeSinceLevelLoad: " + Time.timeSinceLevelLoad);
+    	if (Time.timeSinceLevelLoad > 20 && Time.timeSinceLevelLoad < 40 && !bStageTwo) {
     		StopCoroutine(SpawningRoutine);
     		SpawningRoutine = StartCoroutine("SpawnMeal", 2f);
     		bStageTwo = true;
             animGrandma.SetBool("stage-2", true);
     	}
-    	if (Time.time > 30 && Time.time < 45 && !bStageThree) {
+    	if (Time.timeSinceLevelLoad > 40 && Time.timeSinceLevelLoad < 60 && !bStageThree) {
     		StopCoroutine(SpawningRoutine);
     		SpawningRoutine = StartCoroutine("SpawnMeal", 1.5f);
     		bStageThree = true;
             animGrandma.SetBool("stage-3", true);
     	}
-    	if (Time.time > 45 && Time.time < 60 && !bStageFour) {
+    	if (Time.timeSinceLevelLoad > 60 && Time.timeSinceLevelLoad < 80 && !bStageFour) {
     		StopCoroutine(SpawningRoutine);
     		SpawningRoutine = StartCoroutine("SpawnMeal", 1f);
     		bStageFour = true;
             animGrandma.SetBool("stage-4", true);
     	}
-    	if (Time.time > 75 && !bStageFive) {
+    	if (Time.timeSinceLevelLoad > 80 && !bStageFive) {
     		StopCoroutine(SpawningRoutine);
     		SpawningRoutine = StartCoroutine("SpawnMeal", 0.75f);
     		bStageFive = true;

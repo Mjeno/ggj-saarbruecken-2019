@@ -33,10 +33,10 @@ public class Cat_Enconuter : MonoBehaviour
     void Update()
     {
 
-        if(Time.time > 20 && Time.time < 30) {
+        if(Time.timeSinceLevelLoad > 20 && Time.timeSinceLevelLoad < 30) {
             fSpeed = 0.125f;
         }
-        if(Time.time > 30 && Time.time < 60) {
+        if(Time.timeSinceLevelLoad > 30 && Time.timeSinceLevelLoad < 60) {
             fSpeed = 0.175f;
         }
     }

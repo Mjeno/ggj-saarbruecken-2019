@@ -11,6 +11,7 @@ public class FoodChecker : MonoBehaviour
     public static bool essenDaInedible;
     public static bool essenDaDessert;
 
+    GameObject goStars;
     GameObject goDog;
     GameObject goRejectedInedible;
 
@@ -41,6 +42,7 @@ public class FoodChecker : MonoBehaviour
                 Point_C.Points += PointMulti *10;
                 updateAnimation("bPour");
                 Destroy(currentFood);
+                goStars = Instantiate (Resources.Load ("Stars", typeof(GameObject))) as GameObject;
                 FoodKombo_C.KomboAnzahl++;
             }
 
@@ -62,6 +64,7 @@ public class FoodChecker : MonoBehaviour
                 essenDaVeggie = false;
                 updateAnimation("bThrow");
                 goRejectedInedible = Instantiate (Resources.Load ("RejectedVeggie", typeof(GameObject))) as GameObject;
+                goStars = Instantiate (Resources.Load ("Stars", typeof(GameObject))) as GameObject;
                 Destroy(currentFood);
                 FoodKombo_C.KomboAnzahl++;
             }
@@ -84,6 +87,7 @@ public class FoodChecker : MonoBehaviour
                 essenDaFleisch = false;
                 updateAnimation("bFeed");
                 goDog.GetComponent<Animator>().SetBool("gotsausage", true);
+                goStars = Instantiate (Resources.Load ("Stars", typeof(GameObject))) as GameObject;
                 Destroy(currentFood);
                 FoodKombo_C.KomboAnzahl++;
             }
@@ -105,6 +109,7 @@ public class FoodChecker : MonoBehaviour
                 essenDaInedible = false;
                 goRejectedInedible = Instantiate (Resources.Load ("RejectedInedible", typeof(GameObject))) as GameObject;
                 updateAnimation("bReturn");
+                goStars = Instantiate (Resources.Load ("Stars", typeof(GameObject))) as GameObject;
                 Destroy(currentFood);
                 FoodKombo_C.KomboAnzahl++;
             }
