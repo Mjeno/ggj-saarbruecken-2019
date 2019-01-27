@@ -25,6 +25,15 @@ public class FoodChecker : MonoBehaviour
 
     public static int PointMulti;
 
+    //Sounds:
+    public AudioSource ASFail;
+    public AudioSource ASPerfect;
+    public AudioSource ASWater;
+    public AudioSource ASSweep;
+    public AudioSource ASPot_Destruct;
+    public AudioSource ASDogB;
+    public AudioSource ASDogEat;
+
     void Start() {
     	eaterAnim = this.GetComponent<Animator>();
         goDog = GameObject.Find("Dog");
@@ -44,6 +53,8 @@ public class FoodChecker : MonoBehaviour
                 Destroy(currentFood);
                 goStars = Instantiate (Resources.Load ("Stars", typeof(GameObject))) as GameObject;
                 FoodKombo_C.KomboAnzahl++;
+                ASPerfect.Play();
+                ASWater.Play();
             }
 
             if(Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.K))
@@ -53,6 +64,7 @@ public class FoodChecker : MonoBehaviour
                 FoodBar_C.barLenght += 30;
                 essenDaTrinken = false;
                 FoodKombo_C.KomboMoeglich = false;
+                ASFail.Play();
             }
         }
 
@@ -67,6 +79,9 @@ public class FoodChecker : MonoBehaviour
                 goStars = Instantiate (Resources.Load ("Stars", typeof(GameObject))) as GameObject;
                 Destroy(currentFood);
                 FoodKombo_C.KomboAnzahl++;
+                ASPerfect.Play();
+                ASSweep.Play();
+                ASPot_Destruct.PlayDelayed(1);
             }
 
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.K))
@@ -76,6 +91,8 @@ public class FoodChecker : MonoBehaviour
                 FoodBar_C.barLenght +=  20;
                 essenDaVeggie = false;
                 FoodKombo_C.KomboMoeglich = false;
+                ASFail.Play();
+                
             }
         }
 
@@ -90,6 +107,10 @@ public class FoodChecker : MonoBehaviour
                 goStars = Instantiate (Resources.Load ("Stars", typeof(GameObject))) as GameObject;
                 Destroy(currentFood);
                 FoodKombo_C.KomboAnzahl++;
+                ASPot_Destruct.Play();
+                ASDogB.Play();
+                ASDogEat.PlayDelayed(0.5f);
+                ASPerfect.Play();
             }
             if (Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.K))
             {
@@ -98,6 +119,7 @@ public class FoodChecker : MonoBehaviour
                 FoodBar_C.barLenght += 30;
                 essenDaFleisch = false;
                 FoodKombo_C.KomboMoeglich = false;
+                ASFail.Play();
             }
         }
 
@@ -112,11 +134,16 @@ public class FoodChecker : MonoBehaviour
                 goStars = Instantiate (Resources.Load ("Stars", typeof(GameObject))) as GameObject;
                 Destroy(currentFood);
                 FoodKombo_C.KomboAnzahl++;
+                ASPerfect.Play();
+                ASSweep.Play();
+                ASPot_Destruct.PlayDelayed(0.2f);
             }
             if (Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.W))
             {
                 Destroy(currentFood);
-                Time.timeScale = 0;
+                GameOver.GameOverNow = true;
+                ASFail.Play();
+
             }
         }
 
@@ -127,6 +154,7 @@ public class FoodChecker : MonoBehaviour
                 essenDaDessert = false;
                 Destroy(currentFood);
                 FoodKombo_C.KomboMoeglich = false;
+                
             }
         }
 

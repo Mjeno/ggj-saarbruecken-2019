@@ -11,7 +11,8 @@ public class FoodBar_C : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        barLenght = 0f;
+        trueBarLenght = 0f;
     }
 
     // Update is called once per frame
@@ -34,11 +35,13 @@ public class FoodBar_C : MonoBehaviour
         if(barLenght >= 100)
         {
             barLenght = 100;
-            Time.timeScale = 0;
+            GameOver.GameOverNow = true;
         }
 
         trueBarLenght = barLenght / 100f;
         gameObject.transform.localScale = new Vector3(trueBarLenght, 1, 1);
 
     }
+
+
 }

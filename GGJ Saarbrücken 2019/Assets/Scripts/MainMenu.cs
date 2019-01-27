@@ -19,6 +19,7 @@ public class MainMenu : MonoBehaviour
     GameObject GOSpawendcat;
     public GameObject GOPressAnyTeyt;
     public GameObject GOHowtoCat;
+    public AudioSource ASMenueSwitch;
 
     //TODO - Press any Key
 
@@ -41,6 +42,7 @@ public class MainMenu : MonoBehaviour
                 BMPressKey = false;
                 BMMainMenu = true;
                 //Debug.Log("Any Key");
+                PlaySound();
             }
         }
         else if (BMMainMenu)
@@ -48,6 +50,7 @@ public class MainMenu : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.W))
             {
                 SceneManager.LoadScene("SampleScene");
+                PlaySound();
             }
             else if (Input.GetKeyDown(KeyCode.S))
             {
@@ -55,15 +58,18 @@ public class MainMenu : MonoBehaviour
                 BMMainMenu = false;
                 BMHowToPlay = true;
                 SpawnCat();
+                PlaySound();
             }
             else if (Input.GetKeyDown(KeyCode.K))
             {
                 GetComponent<SpriteRenderer>().sprite = SCredits;
                 BMMainMenu = false;
                 BMCredits = true;
+                PlaySound();
             }
             else if (Input.GetKeyDown(KeyCode.L))
             {
+                PlaySound();
                 Application.Quit();
             }
         }
@@ -74,6 +80,7 @@ public class MainMenu : MonoBehaviour
                 GetComponent<SpriteRenderer>().sprite = SMainMenu;
                 BMHowToPlay = false;
                 BMMainMenu = true;
+                PlaySound();
             }
         }
         else if (BMCredits)
@@ -83,6 +90,7 @@ public class MainMenu : MonoBehaviour
                 GetComponent<SpriteRenderer>().sprite = SMainMenu;
                 BMCredits = false;
                 BMMainMenu = true;
+                PlaySound();
             }
         }
     }
@@ -115,6 +123,10 @@ public class MainMenu : MonoBehaviour
             {
                 GOPressAnyTeyt.GetComponent<SpriteRenderer>().enabled = false;
             }
+        }
     }
+    void PlaySound()
+    {
+        ASMenueSwitch.Play();
     }
 }
