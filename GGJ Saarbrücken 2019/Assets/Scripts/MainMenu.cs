@@ -14,6 +14,11 @@ public class MainMenu : MonoBehaviour
     bool BMMainMenu;
     bool BMHowToPlay;
     bool BMCredits;
+    public GameObject GOCat;
+    public Transform TrCatSpawn;
+    GameObject GOSpawendcat;
+    public GameObject GOPressAnyTeyt;
+    public GameObject GOHowtoCat;
 
     //TODO - Press any Key
 
@@ -21,6 +26,7 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         BMPressKey = true;
+        StartCoroutine(AnyKey(1));
         
     }
 
@@ -48,6 +54,7 @@ public class MainMenu : MonoBehaviour
                 GetComponent<SpriteRenderer>().sprite = SHowToPlay;
                 BMMainMenu = false;
                 BMHowToPlay = true;
+                SpawnCat();
             }
             else if (Input.GetKeyDown(KeyCode.K))
             {
@@ -78,5 +85,36 @@ public class MainMenu : MonoBehaviour
                 BMMainMenu = true;
             }
         }
+    }
+
+    void SpawnCat()
+    {
+        if (!GOSpawendcat) {
+            GOSpawendcat = Instantiate(GOCat, TrCatSpawn);
+            GOSpawendcat.GetComponent<Cat_Enconuter>().GOCatSpawn = gameObject;
+            GOSpawendcat.GetComponent<Cat_Enconuter>().BSpawnedRight = true;
+            GOSpawendcat.GetComponent<Cat_Enconuter>().V2Destination = new Vector2(8, -1);
+        }
+        StartCoroutine(CatTutorial(1.5f));
+    }
+
+    private IEnumerator CatTutorial(float secs1)
+    {
+        yield return new WaitForSeconds(secs1);
+        GOHowtoCat.GetComponent<SpriteRenderer>().enabled = true;
+    }
+
+    private IEnumerator AnyKey(float secs)
+    {
+        while (BMPressKey) { 
+            yield return new WaitForSeconds(secs);
+            if (BMPressKey && !GOPressAnyTeyt.GetComponent<SpriteRenderer>().enabled)
+            {
+                GOPressAnyTeyt.GetComponent<SpriteRenderer>().enabled = true;
+            } else
+            {
+                GOPressAnyTeyt.GetComponent<SpriteRenderer>().enabled = false;
+            }
+    }
     }
 }
