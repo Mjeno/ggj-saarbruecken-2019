@@ -8,7 +8,7 @@ public class RestartGame : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        SceneManager.UnloadSceneAsync("SampleScene");
+
     }
 
     // Update is called once per frame

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class FoodCheckerExit_C : MonoBehaviour
 {
@@ -9,7 +8,6 @@ public class FoodCheckerExit_C : MonoBehaviour
 
     void Start() {
         goPlayer = GameObject.Find("FoodChecker");
-        SceneManager.UnloadSceneAsync("GameOver");
     }
 
     private void OnTriggerExit2D(Collider2D collision)

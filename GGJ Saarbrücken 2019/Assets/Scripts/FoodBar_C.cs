@@ -11,7 +11,8 @@ public class FoodBar_C : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        barLenght = 0f;
+        trueBarLenght = 0f;
     }
 
     // Update is called once per frame
